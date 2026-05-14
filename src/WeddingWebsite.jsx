@@ -21,6 +21,26 @@ export default function WeddingWebsite() {
     ],
   };
 
+  // ===========================================================================
+  // 📋 GOOGLE SHEETS CONFIG — Paste your Apps Script Web App URL below
+  // After deploying the Apps Script, replace the placeholder URL with the
+  // one ending in /exec
+  // ===========================================================================
+  const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxL-OLqawa0-7eVI9O2mZJr-Dm_nMooCV5wvtvFqffTPXtuJ6ojU0BWe84apo0KpS5Z/exec';
+  const WEDDING_SIDE = 'Bride'; // Change to 'Groom' for the groom-side site
+
+  // ===========================================================================
+  // 📸 GOOGLE DRIVE PHOTO UPLOAD CONFIG
+  // 1. Create a folder in Google Drive named "Prakash & Priya Wedding Photos"
+  // 2. Right-click → Share → Change to "Anyone with the link" → "Editor" access
+  //    (This allows guests to upload without signing in to your account)
+  // 3. Copy the folder URL and paste it below
+  //
+  // Example: https://drive.google.com/drive/folders/1ABC123xyz...
+  // ===========================================================================
+  const PHOTO_UPLOAD_URL = 'https://drive.google.com/drive/folders/17pN4Yym_NVngkGlkxT6jCzgqChbXv7B2?usp=drive_link';
+  const PHOTO_VIEW_URL = https://drive.google.com/drive/folders/17pN4Yym_NVngkGlkxT6jCzgqChbXv7B2?usp=drive_link; // Same folder for viewing; or use a separate gallery URL
+
   const EVENTS = [
     {
       key: 'devpuja',
@@ -88,9 +108,12 @@ export default function WeddingWebsite() {
     accommodation: 'no',
     events: [],
     travel: '',
+    phone: '',
     message: '',
   });
   const [rsvpSubmitted, setRsvpSubmitted] = useState(false);
+  const [rsvpSubmitting, setRsvpSubmitting] = useState(false);
+  const [rsvpError, setRsvpError] = useState(null);
   const [liveUpdates, setLiveUpdates] = useState([
     { id: 1, time: 'Posted just now', title: 'Welcome! / स्वागत है', body: 'The countdown has begun. We can\'t wait to celebrate with you. Bookmark this page for live updates during the wedding week. / शुभ घड़ी की प्रतीक्षा शुरू हो गई है। शादी सप्ताह की ताज़ा सूचना के लिए इस पेज को सहेज लें।', type: 'info' },
   ]);
@@ -158,16 +181,49 @@ export default function WeddingWebsite() {
     window.open(url, '_blank');
   };
 
-  const submitRsvp = () => {
+  // ===========================================================================
+  // 📤 RSVP SUBMIT → Google Sheets
+  // ===========================================================================
+  const submitRsvp = async () => {
     if (!rsvp.name || !rsvp.attending) return;
-    setRsvpSubmitted(true);
-    // In production: POST to backend
-    setTimeout(() => {
+
+    setRsvpSubmitting(true);
+    setRsvpError(null);
+
+    const payload = {
+      name: rsvp.name,
+      side: WEDDING_SIDE,
+      attending: rsvp.attending,
+      guests: rsvp.guests,
+      meal: rsvp.meal,
+      events: rsvp.events,
+      accommodation: rsvp.accommodation,
+      travel: rsvp.travel,
+      phone: rsvp.phone || '',
+      message: rsvp.message,
+    };
+
+    try {
+      // Note: 'no-cors' mode is required for Google Apps Script.
+      // We can't read the response, but the data will still be saved.
+      await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      setRsvpSubmitted(true);
       setLiveUpdates((prev) => [
         { id: Date.now(), time: 'Just now', title: 'New RSVP', body: `${rsvp.name} ${rsvp.attending === 'yes' ? 'is joining' : 'sent regrets'} ❤️`, type: 'rsvp' },
         ...prev,
       ]);
-    }, 500);
+    } catch (err) {
+      setRsvpError('Could not save RSVP. Please try again or call us directly.');
+      console.error('RSVP submission failed:', err);
+    } finally {
+      setRsvpSubmitting(false);
+    }
   };
 
   const shareOnWhatsApp = () => {
@@ -526,7 +582,7 @@ export default function WeddingWebsite() {
             <div className="font-hindi text-amber-700 text-sm mb-3">॥ मांगलिक कार्यक्रम ॥</div>
             <h2 className="font-script text-5xl sm:text-6xl text-red-900 mb-2">Wedding Events</h2>
             <p className="font-hindi text-stone-700 mt-3 text-base">तीन दिनों का उत्सव — हम आशा करते हैं आप सभी कार्यक्रमों में पधारेंगे</p>
-            <p className="font-serif-display text-stone-600 mt-1">Six days of celebration. We hope to see you at all of them.</p>
+            <p className="font-serif-display text-stone-600 mt-1">Three days of celebration. We hope to see you at all of them.</p>
           </div>
 
           <div className="space-y-5">
@@ -753,6 +809,18 @@ export default function WeddingWebsite() {
                       className="w-full px-4 py-3 border border-amber-300 rounded-lg bg-amber-50/30 focus:outline-none focus:ring-2 focus:ring-amber-600"
                     />
                   </div>
+
+                  {/* Phone */}
+                  <div>
+                    <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">PHONE NUMBER (optional) / फ़ोन नंबर</label>
+                    <input
+                      type="tel"
+                      value={rsvp.phone}
+                      onChange={(e) => setRsvp({ ...rsvp, phone: e.target.value })}
+                      placeholder="+91 ____ ___ ___"
+                      className="w-full px-4 py-3 border border-amber-300 rounded-lg bg-amber-50/30 focus:outline-none focus:ring-2 focus:ring-amber-600"
+                    />
+                  </div>
                 </>
               )}
 
@@ -768,12 +836,19 @@ export default function WeddingWebsite() {
                 />
               </div>
 
+              {/* Error message */}
+              {rsvpError && (
+                <div className="bg-red-50 border border-red-300 text-red-800 px-4 py-3 rounded-lg text-sm">
+                  ⚠️ {rsvpError}
+                </div>
+              )}
+
               <button
                 onClick={submitRsvp}
-                disabled={!rsvp.name || !rsvp.attending}
+                disabled={!rsvp.name || !rsvp.attending || rsvpSubmitting}
                 className="w-full bg-red-800 hover:bg-red-900 disabled:bg-stone-300 disabled:cursor-not-allowed text-white py-4 rounded-lg font-deco tracking-widest shadow-lg transition"
               >
-                SUBMIT RSVP / उत्तर भेजें →
+                {rsvpSubmitting ? 'SENDING... / भेज रहे हैं...' : 'SUBMIT RSVP / उत्तर भेजें →'}
               </button>
             </div>
           ) : (
@@ -794,7 +869,7 @@ export default function WeddingWebsite() {
                   : `${rsvp.name} जी, सूचित करने के लिए धन्यवाद। आपकी कमी खलेगी, हमारी शुभकामनाएँ आपके साथ हैं। 💛`}
               </p>
               <button
-                onClick={() => { setRsvpSubmitted(false); setRsvp({ name: '', attending: '', guests: 1, meal: 'veg', accommodation: 'no', events: [], travel: '', message: '' }); }}
+                onClick={() => { setRsvpSubmitted(false); setRsvpError(null); setRsvp({ name: '', attending: '', guests: 1, meal: 'veg', accommodation: 'no', events: [], travel: '', phone: '', message: '' }); }}
                 className="mt-6 text-sm font-deco tracking-widest text-amber-800 hover:text-red-900 underline"
               >
                 Submit another RSVP / दूसरा उत्तर भेजें
@@ -895,14 +970,37 @@ export default function WeddingWebsite() {
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <button className="inline-flex items-center gap-2 bg-white border-2 border-amber-600 text-amber-900 hover:bg-amber-50 px-6 py-3 rounded-full font-deco text-sm tracking-widest transition">
-              <Camera size={16} />
-              UPLOAD YOUR PHOTOS
-            </button>
-            <p className="text-xs text-stone-600 mt-3 font-serif-display italic">
-              Share your shots after the wedding using {WEDDING.hashtag}
-            </p>
+          <div className="mt-8 text-center space-y-4">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={PHOTO_UPLOAD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-red-800 hover:bg-red-900 text-white px-6 py-3 rounded-full font-deco text-sm tracking-widest shadow-md transition"
+              >
+                <Camera size={16} />
+                UPLOAD YOUR PHOTOS / फ़ोटो अपलोड करें
+              </a>
+              <a
+                href={PHOTO_VIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white border-2 border-amber-600 text-amber-900 hover:bg-amber-50 px-6 py-3 rounded-full font-deco text-sm tracking-widest transition"
+              >
+                VIEW ALL PHOTOS / सभी फ़ोटो देखें →
+              </a>
+            </div>
+            <div className="max-w-md mx-auto">
+              <p className="text-xs text-stone-600 font-serif-display italic">
+                Click "Upload" to add your photos to our shared Google Drive folder.
+              </p>
+              <p className="text-xs text-stone-600 font-hindi italic mt-1">
+                कृपया अपनी फ़ोटो हमारे Google Drive फ़ोल्डर में अपलोड करें।
+              </p>
+              <p className="text-xs text-stone-500 mt-2 font-serif-display">
+                Also share on social media using <span className="font-semibold text-amber-800">{WEDDING.hashtag}</span>
+              </p>
+            </div>
           </div>
         </div>
       </section>
