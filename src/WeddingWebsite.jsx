@@ -48,7 +48,7 @@ export default function WeddingWebsite() {
       tithi: 'ज्येष्ठ शुक्ल पक्ष चतुर्थी',
       venue: 'Singh Residence',
       venueLine2: 'Village — Shahjahanpur, Dist. Patna',
-      dress: 'Festive · Green / Pink / Bright / हरा, गुलाबी',
+      dress: 'Festive · Green / हरा',
       mapUrl: 'https://maps.google.com/?q=Shahjahanpur+Patna+Bihar',
       contact: 'श्री राजेश कुमार सिंह · +91 9470011194',
       color: 'green',
