@@ -13,106 +13,62 @@ export default function WeddingWebsite() {
     quote: 'खुशियाँ तभी पूरी लगती हैं, जब अपने साथ हों',
     quoteEn: 'The happiest moments are the ones shared with loved ones',
     storyHi:
-      'परिवारों के प्यार और आशीर्वाद के साथ, प्रकाश और प्रिया अपनी नई जिंदगी की शुरुआत करने जा रहे हैं। अब बस इंतज़ार है आप सबके साथ मिलकर इस खुशी को हँसी, मस्ती, नाच-गाने और ढेर सारी यादों के साथ मनाने का। आप सबके बिना यह खुशी अधूरी लगेगी।',
+      'परिवारों के प्यार और आशीर्वाद के साथ, प्रिया और प्रकाश अपनी नई जिंदगी की शुरुआत करने जा रहे हैं। अब बस इंतज़ार है आप सबके साथ मिलकर इस खुशी को हँसी, मस्ती, नाच-गाने और ढेर सारी यादों के साथ मनाने का। आप सबके बिना यह खुशी अधूरी लगेगी।',
     storyEn:
-      'With the love and blessings of their families, Prakash and Priya are ready to begin a beautiful new chapter together. Now it’s time to celebrate this special occasion with laughter, dance, great food, and the people who matter the most.',
+      'With the love and blessings of their families, Priya and Prakash are ready to begin a beautiful new chapter together. Now it’s time to celebrate this special occasion with laughter, dance, great food, and the people who matter the most.',
     contacts: [
-      { name: 'विकाश मेहता / Vikash Mehta', role: 'Groom\'s Brother / वर के भाई', phone: '+91 9973747471' },
-      { name: 'श्री कैलाश प्रसाद मेहता / Sh. Kailash Prasad Mehta', role: 'Groom\'s Father / वर के पिता', phone: '+91 7870027514' },
+      { name: 'श्री राजेश कुमार सिंह (राकेश सिंह) / Sh. Rajesh Kumar Singh', role: 'Bride\'s Father / वधू के पिता', phone: '+91 9470011194' },
     ],
   };
 
   const EVENTS = [
     {
-      key: 'kuldevta',
-      name: 'कुलदेवता पूजन',
-      nameEn: 'Kuldevta Pujan',
-      date: '2026-06-15',
-      dateLabel: 'Mon, 15 Jun',
-      time: '11:00 AM',
-      venue: 'Mehta Residence, Ahiyapur',
-      venueLine2: 'Behind Shakuntala Cinema, Muzaffarpur',
-      dress: 'Traditional · Yellow / Cream',
-      mapUrl: 'https://www.google.com/maps/place/Neha+Enterprises/@26.1484055,85.3947537,17z/data=!3m1!4b1!4m6!3m5!1s0x39ed11a5ea4d29ed:0xdc4eedf1a8b0684c!8m2!3d26.1484055!4d85.397334!16s%2Fg%2F11g10l1n1w',
-      contact: 'Vikash Mehta / विकाश मेहता · +91 9973747471',
+      key: 'devpuja',
+      name: 'देवपूजा, मण्डपाच्छादन, मटकोर हल्दी कलश',
+      nameEn: 'Devpuja, Mandapacchadan, Matkor & Haldi Kalash',
+      date: '2026-06-17',
+      dateLabel: 'Wed, 17 Jun',
+      time: 'पूरे दिन / All Day',
+      tithi: 'ज्येष्ठ शुक्ल पक्ष तृतीया',
+      venue: 'Singh Residence',
+      venueLine2: 'Village — Shahjahanpur, Dist. Patna',
+      dress: 'Traditional · Yellow / Cream / पीला, क्रीम',
+      mapUrl: 'https://maps.google.com/?q=Shahjahanpur+Patna+Bihar',
+      contact: 'श्री राजेश कुमार सिंह · +91 9470011194',
       color: 'amber',
       icon: '🛕',
     },
     {
-      key: 'shivcharcha',
-      name: 'शिवचर्चा एवं हनुमान आराधना',
-      nameEn: 'Shivcharcha & Hanuman Aaradhana',
-      date: '2026-06-16',
-      dateLabel: 'Tue, 16 Jun',
-      time: '11:00 AM',
-      venue: 'Mehta Residence, Ahiyapur',
-      venueLine2: 'Behind Shakuntala Cinema, Muzaffarpur',
-      dress: 'Traditional · Orange / Red',
-      mapUrl: 'https://www.google.com/maps/place/Neha+Enterprises/@26.1484055,85.3947537,17z/data=!3m1!4b1!4m6!3m5!1s0x39ed11a5ea4d29ed:0xdc4eedf1a8b0684c!8m2!3d26.1484055!4d85.397334!16s%2Fg%2F11g10l1n1w',
-      contact: 'Vikash Mehta / विकाश मेहता · +91 9973747471',
-      color: 'orange',
-      icon: '🔱',
-    },
-    {
-      key: 'haldi',
-      name: 'हल्दी एवं तन्नी शांति',
-      nameEn: 'Haldi & Tanni Shanti',
-      date: '2026-06-17',
-      dateLabel: 'Wed, 17 Jun',
-      time: '5:00 PM',
-      venue: 'Mehta Residence, Ahiyapur',
-      venueLine2: 'Behind Shakuntala Cinema, Muzaffarpur',
-      dress: 'Yellow · Wear clothes you don\'t mind staining!',
-      mapUrl: 'https://www.google.com/maps/place/Neha+Enterprises/@26.1484055,85.3947537,17z/data=!3m1!4b1!4m6!3m5!1s0x39ed11a5ea4d29ed:0xdc4eedf1a8b0684c!8m2!3d26.1484055!4d85.397334!16s%2Fg%2F11g10l1n1w',
-      contact: 'Vikash Mehta / विकाश मेहता · +91 9973747471',
-      color: 'yellow',
-      icon: '💛🌼',
-    },
-    {
-      key: 'mehendi',
-      name: 'मेहंदी एवं संगीत',
-      nameEn: 'Mehendi & Sangeet',
+      key: 'ghritdhari',
+      name: 'घृतधारी एवं मेहंदी',
+      nameEn: 'Ghritdhari & Mehendi',
       date: '2026-06-18',
       dateLabel: 'Thu, 18 Jun',
-      time: '5:00 PM',
-      venue: 'Mehta Residence, Ahiyapur',
-      venueLine2: 'Behind Shakuntala Cinema, Muzaffarpur',
-      dress: 'Festive · Green / Pink / Bright',
-      mapUrl: 'https://www.google.com/maps/place/Neha+Enterprises/@26.1484055,85.3947537,17z/data=!3m1!4b1!4m6!3m5!1s0x39ed11a5ea4d29ed:0xdc4eedf1a8b0684c!8m2!3d26.1484055!4d85.397334!16s%2Fg%2F11g10l1n1w',
-      contact: 'Vikash Mehta / विकाश मेहता · +91 9973747471',
+      time: 'संध्या / Evening',
+      tithi: 'ज्येष्ठ शुक्ल पक्ष चतुर्थी',
+      venue: 'Singh Residence',
+      venueLine2: 'Village — Shahjahanpur, Dist. Patna',
+      dress: 'Festive · Green / Pink / Bright / हरा, गुलाबी',
+      mapUrl: 'https://maps.google.com/?q=Shahjahanpur+Patna+Bihar',
+      contact: 'श्री राजेश कुमार सिंह · +91 9470011194',
       color: 'green',
       icon: '💚🎶',
     },
     {
       key: 'wedding',
-      name: 'शुभ विवाह',
-      nameEn: 'The Wedding',
+      name: 'शुभ विवाह एवं प्रीतिभोज',
+      nameEn: 'The Wedding & Pritibhoj',
       date: '2026-06-19',
       dateLabel: 'Fri, 19 Jun',
-      time: 'Baraat departs 3:00 PM',
-      venue: 'Bride\'s residence, Patna',
-      venueLine2: 'Baraat departs from Mehta Residence, Muzaffarpur',
-      dress: 'Formal Indian Attire',
-      mapUrl: 'https://maps.google.com/?q=Shahjahanpur+Patna',
-      contact: 'Vikash Mehta / विकाश मेहता · +91 9973747471',
+      time: 'प्रीतिभोज: संध्या 7 बजे से आपके आगमन तक',
+      tithi: 'ज्येष्ठ शुक्ल पक्ष पंचमी',
+      venue: 'Singh Residence',
+      venueLine2: 'Village — Shahjahanpur, Dist. Patna',
+      dress: 'Formal Indian Attire / पारंपरिक भारतीय परिधान',
+      mapUrl: 'https://maps.google.com/?q=Shahjahanpur+Patna+Bihar',
+      contact: 'श्री राजेश कुमार सिंह · +91 9470011194',
       color: 'red',
       icon: '👰🤵',
-      highlight: true,
-    },
-    {
-      key: 'reception',
-      name: 'रिसेप्शन एवं प्रीतिभोज',
-      nameEn: 'Reception & Pritibhoj',
-      date: '2026-06-21',
-      dateLabel: 'Sun, 21 Jun',
-      time: '6:00 PM onwards',
-      venue: 'The Blessing Palace',
-      venueLine2: 'Indira Colony, Kachhi Pakki, Muzaffarpur',
-      dress: 'Cocktail / Formal',
-      mapUrl: 'https://maps.google.com/?q=Blessing+Palace+Muzaffarpur',
-      contact: 'Vikash Mehta / विकाश मेहता · +91 9973747471',
-      color: 'rose',
-      icon: '🎉🍽️',
       highlight: true,
     },
   ];
@@ -215,7 +171,7 @@ export default function WeddingWebsite() {
   };
 
   const shareOnWhatsApp = () => {
-    const text = `💍 सादर आमंत्रण 💍\n\nपरिवार के प्यार और आशीर्वाद के साथ,\n${WEDDING.groom.nameEn} ❤️ ${WEDDING.bride.nameEn}\nआपको अपने विवाह समारोह में सपरिवार आमंत्रित करते हैं।\n\n📅 19 June 2026\n\nAap sabke bina ye khushi adhuri lagegi. Zaroor aaiyega ✨\n\n${WEDDING.hashtag}\n\n${window.location.href}`;
+    const text = `💍 सादर आमंत्रण 💍\n\nपरिवार के प्यार और आशीर्वाद के साथ,\n${WEDDING.bride.nameEn} ❤️ ${WEDDING.groom.nameEn}\nआपको अपने विवाह समारोह में सपरिवार आमंत्रित करते हैं।\n\n📅 19 June 2026\n\nAap sabke bina ye khushi adhuri lagegi. Zaroor aaiyega ✨\n\n${WEDDING.hashtag}\n\n${window.location.href}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -333,7 +289,7 @@ export default function WeddingWebsite() {
               P&P
             </div>
             <div className="hidden sm:block">
-              <div className="font-script text-xl text-red-900 leading-none">Prakash &amp; Priya</div>
+              <div className="font-script text-xl text-red-900 leading-none">Priya &amp; Prakash</div>
               <div className="text-[10px] text-amber-700 tracking-widest uppercase">19 · 06 · 2026</div>
             </div>
           </button>
@@ -411,7 +367,7 @@ export default function WeddingWebsite() {
 
             <div className="space-y-2 sm:space-y-4">
               <h1 className="font-script text-5xl sm:text-7xl md:text-8xl gold-shimmer leading-none">
-                {WEDDING.groom.nameEn}
+                {WEDDING.bride.nameEn}
               </h1>
               <div className="flex items-center justify-center gap-4 my-3">
                 <div className="h-px w-12 sm:w-24 bg-amber-600/40" />
@@ -419,12 +375,12 @@ export default function WeddingWebsite() {
                 <div className="h-px w-12 sm:w-24 bg-amber-600/40" />
               </div>
               <h1 className="font-script text-5xl sm:text-7xl md:text-8xl gold-shimmer leading-none">
-                {WEDDING.bride.nameEn}
+                {WEDDING.groom.nameEn}
               </h1>
             </div>
 
             <div className="font-hindi text-base sm:text-xl text-stone-700 mt-6">
-              {WEDDING.groom.name} &nbsp;◆&nbsp; {WEDDING.bride.name}
+              {WEDDING.bride.name} &nbsp;◆&nbsp; {WEDDING.groom.name}
             </div>
           </div>
 
@@ -533,15 +489,15 @@ export default function WeddingWebsite() {
                 icon: '✨',
                 titleEn: 'How we met',
                 titleHi: 'पहली मुलाक़ात',
-                bodyEn: 'Two families connected through shared friends in Muzaffarpur. The first meeting felt like home.',
-                bodyHi: 'मुजफ्फरपुर में दो परिवार साझे मित्रों के माध्यम से जुड़े। पहली मुलाक़ात ऐसी लगी जैसे अपना घर हो।',
+                bodyEn: 'Two families came together through shared connections. The first meeting felt like home.',
+                bodyHi: 'दो परिवार साझे रिश्तों के माध्यम से एक हुए। पहली मुलाक़ात ऐसी लगी जैसे अपना घर हो।',
               },
               {
                 icon: '👰🤵',
                 titleEn: 'A New Beginning',
                 titleHi: 'नई शुरुआत',
-                bodyEn: 'With the blessings of their families, Prakash and Priya are ready to begin this beautiful journey together and create a lifetime of memories.',
-                bodyHi: 'परिवारों के आशीर्वाद के साथ, प्रकाश और प्रिया अब अपनी नई जिंदगी की शुरुआत करने जा रहे हैं और साथ मिलकर खूबसूरत यादें बनाने के लिए तैयार हैं।',
+                bodyEn: 'With the blessings of their families, Priya and Prakash are ready to begin this beautiful journey together and create a lifetime of memories.',
+                bodyHi: 'परिवारों के आशीर्वाद के साथ, प्रिया और प्रकाश अब अपनी नई जिंदगी की शुरुआत करने जा रहे हैं और साथ मिलकर खूबसूरत यादें बनाने के लिए तैयार हैं।',
               },
               {
                 icon: '🎉',
@@ -594,6 +550,9 @@ export default function WeddingWebsite() {
                   <div className="space-y-2">
                     <div className="font-hindi text-lg sm:text-xl font-semibold">{ev.name}</div>
                     <div className="font-script text-2xl sm:text-3xl">{ev.nameEn}</div>
+                    {ev.tithi && (
+                      <div className="font-hindi text-xs italic opacity-70">({ev.tithi})</div>
+                    )}
                     <div className="flex items-start gap-2 text-sm opacity-80">
                       <Calendar size={14} className="mt-1 flex-shrink-0" />
                       <span>{ev.time}</span>
@@ -638,9 +597,9 @@ export default function WeddingWebsite() {
           </div>
 
           <div className="mt-10 text-center font-serif-display italic text-stone-600">
-            All ceremonies (except the wedding itself) are held at the Mehta residence in Ahiyapur, Muzaffarpur.
+            All ceremonies are held at the Singh residence in Shahjahanpur, Patna.
             <br />
-            <span className="font-hindi not-italic text-stone-700">समस्त वैवाहिक कार्यक्रम मेहता निवास, अहियापुर, मुजफ्फरपुर में संपन्न होंगे।</span>
+            <span className="font-hindi not-italic text-stone-700">समस्त वैवाहिक कार्यक्रम मेरे निवास स्थान, ग्राम-शाहजहाँपुर, पटना में संपन्न होंगे।</span>
           </div>
         </div>
       </section>
@@ -851,8 +810,8 @@ export default function WeddingWebsite() {
           <div className="text-center mb-14">
             <div className="font-hindi text-amber-700 text-sm mb-3">॥ यात्रा एवं आवास ॥</div>
             <h2 className="font-script text-5xl sm:text-6xl text-red-900 mb-2">Travel &amp; Stay</h2>
-            <p className="font-hindi text-stone-700 mt-3">मुजफ्फरपुर एवं पटना तक कैसे पहुँचें</p>
-            <p className="font-serif-display text-stone-600 mt-1">Getting to Muzaffarpur &amp; Patna</p>
+            <p className="font-hindi text-stone-700 mt-3">पटना (शाहजहाँपुर) तक कैसे पहुँचें</p>
+            <p className="font-serif-display text-stone-600 mt-1">Getting to Shahjahanpur, Patna</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
@@ -862,8 +821,7 @@ export default function WeddingWebsite() {
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">BY AIR</h3>
               <div className="font-hindi text-sm text-amber-800 mb-3">हवाई मार्ग से</div>
               <div className="space-y-2 text-sm text-stone-700">
-                <div><strong>Patna Airport (PAT)</strong> / पटना हवाई अड्डा — 75 km from Muzaffarpur (~2 hrs)</div>
-                <div><strong>Darbhanga Airport (DBR)</strong> / दरभंगा हवाई अड्डा — 65 km (~1.5 hrs)</div>
+                <div><strong>Patna Airport (PAT)</strong> / पटना हवाई अड्डा — Main hub, well-connected to all major cities</div>
                 <div className="text-xs text-amber-800 mt-3">
                   Pickup can be arranged. Mark "Need Pickup" in RSVP travel field.<br />
                   <span className="font-hindi">पिकअप की व्यवस्था की जा सकती है। RSVP में बताएँ।</span>
@@ -877,9 +835,10 @@ export default function WeddingWebsite() {
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">BY TRAIN</h3>
               <div className="font-hindi text-sm text-amber-800 mb-3">रेल मार्ग से</div>
               <div className="space-y-2 text-sm text-stone-700">
-                <div><strong>Muzaffarpur Jn (MFP)</strong> / मुजफ्फरपुर जं — main station, well-connected</div>
-                <div><strong>Patna Jn (PNBE)</strong> / पटना जं — for wedding day, then drive</div>
-                <div><strong>Hajipur Jn (HJP)</strong> / हाजीपुर जं — alternate, 40 km</div>
+                <div><strong>Patna Jn (PNBE)</strong> / पटना जं — main station, well-connected</div>
+                <div><strong>Rajendra Nagar Terminal (RJPB)</strong> / राजेन्द्र नगर — alternate Patna station</div>
+                <div><strong>Danapur (DNR)</strong> / दानापुर — alternate</div>
+                <div><strong>Daniyawan</strong> / दनियावां — alternate</div>
               </div>
             </div>
 
@@ -901,10 +860,10 @@ export default function WeddingWebsite() {
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">🛺 LOCAL TRANSPORT</h3>
               <div className="font-hindi text-sm text-amber-800 mb-3">स्थानीय यातायात</div>
               <div className="text-sm text-stone-700 space-y-1">
-                <div><strong>Rapido:</strong> Limited / <span className="font-hindi">सीमित उपलब्धता</span></div>
-                <div><strong>Auto/Rickshaw:</strong> Plenty available / <span className="font-hindi">ऑटो/रिक्शा खूब मिलेंगे</span></div>
+                <div><strong>Ola/Uber outstation</strong> / <span className="font-hindi">सीमित उपलब्धता</span></div>
+                <div><strong>Local taxi, bus</strong> / <span className="font-hindi">ऑटो/रिक्शा खूब मिलेंगे</span></div>
                 <div className="text-xs mt-3 italic">
-                  Family cars available for shuttling between events.<br />
+                  Family cars available for pickup from station and airport.<br />
                   <span className="font-hindi">कार्यक्रमों के बीच आने-जाने के लिए परिवार की गाड़ियाँ उपलब्ध हैं।</span>
                 </div>
               </div>
@@ -1050,7 +1009,7 @@ export default function WeddingWebsite() {
       <footer className="bg-gradient-to-b from-[#FDF6E9] to-red-900 text-amber-100 py-12 px-4 mt-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="font-script text-4xl gold-shimmer mb-2">
-            {WEDDING.groom.nameEn} &amp; {WEDDING.bride.nameEn}
+            {WEDDING.bride.nameEn} &amp; {WEDDING.groom.nameEn}
           </div>
           <div className="font-deco text-sm tracking-widest text-amber-300 mb-6">
             19 · 06 · 2026 · PATNA
@@ -1062,10 +1021,10 @@ export default function WeddingWebsite() {
             <Heart size={16} className="text-amber-300" fill="currentColor" />
           </div>
           <p className="text-xs text-amber-300/80 font-serif-display">
-            Made with love by the Mehta family · {WEDDING.hashtag}
+            Made with love by the Singh family · {WEDDING.hashtag}
           </p>
           <p className="font-hindi text-xs text-amber-300/80 mt-1">
-            मेहता परिवार द्वारा प्रेम से निर्मित
+            सिंह परिवार द्वारा प्रेम से निर्मित
           </p>
         </div>
         <div className="marigold-border h-2 mt-12 -mx-4" />
