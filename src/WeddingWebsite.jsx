@@ -17,7 +17,7 @@ export default function WeddingWebsite() {
     storyEn:
       'With the love and blessings of their families, Priya and Prakash are ready to begin a beautiful new chapter together. Now it’s time to celebrate this special occasion with laughter, dance, great food, and the people who matter the most.',
     contacts: [
-      { name: 'श्री राजेश कुमार सिंह (राकेश सिंह) / Sh. Rajesh Kumar Singh', role: 'Bride\'s Father / वधू के पिता', phone: '+91 9470011194' },
+      { name: 'श्री राजेश कुमार सिंह (राजन सिंह) / Sh. Rajesh Kumar Singh', role: 'Bride\'s Father / वधू के पिता', phone: '+91 9470011194' },
     ],
   };
 
@@ -525,7 +525,7 @@ export default function WeddingWebsite() {
           <div className="text-center mb-14">
             <div className="font-hindi text-amber-700 text-sm mb-3">॥ मांगलिक कार्यक्रम ॥</div>
             <h2 className="font-script text-5xl sm:text-6xl text-red-900 mb-2">Wedding Events</h2>
-            <p className="font-hindi text-stone-700 mt-3 text-base">छः दिनों का उत्सव — हम आशा करते हैं आप सभी कार्यक्रमों में पधारेंगे</p>
+            <p className="font-hindi text-stone-700 mt-3 text-base">तीन दिनों का उत्सव — हम आशा करते हैं आप सभी कार्यक्रमों में पधारेंगे</p>
             <p className="font-serif-display text-stone-600 mt-1">Six days of celebration. We hope to see you at all of them.</p>
           </div>
 
