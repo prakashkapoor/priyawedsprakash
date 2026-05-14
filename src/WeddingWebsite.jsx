@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Heart, Calendar, MapPin, Phone, Users, Camera, Gift, Bell, Menu, X, ChevronRight, Plane, Hotel, Car, Music, Sparkles, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Heart, Calendar, MapPin, Phone, Camera, Bell, Menu, X, Plane, Car, Music, Sparkles, Check } from 'lucide-react';
 
 export default function WeddingWebsite() {
   // ===========================================================================
@@ -17,29 +17,23 @@ export default function WeddingWebsite() {
     storyEn:
       'With the love and blessings of their families, Priya and Prakash are ready to begin a beautiful new chapter together. Now it’s time to celebrate this special occasion with laughter, dance, great food, and the people who matter the most.',
     contacts: [
-      { name: 'श्री राजेश कुमार सिंह (राजन सिंह) / Sh. Rajesh Kumar Singh', role: 'Bride\'s Father / वधू के पिता', phone: '+91 9470011194' },
+      { name: 'श्री राजेश कुमार सिंह (Rajan सिंह) / Sh. Rajesh Kumar Singh', role: 'Bride\'s Father / वधू के पिता', phone: '+91 9470011194' },
     ],
   };
 
   // ===========================================================================
-  // 📋 GOOGLE SHEETS CONFIG — Paste your Apps Script Web App URL below
-  // After deploying the Apps Script, replace the placeholder URL with the
-  // one ending in /exec
+  // 📋 GOOGLE SHEETS RSVP — Paste your Apps Script Web App URL here
+  // (URL ends with /exec)
   // ===========================================================================
-  const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxL-OLqawa0-7eVI9O2mZJr-Dm_nMooCV5wvtvFqffTPXtuJ6ojU0BWe84apo0KpS5Z/exec';
-  const WEDDING_SIDE = 'Bride'; // Change to 'Groom' for the groom-side site
+  const GOOGLE_SHEET_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+  const WEDDING_SIDE = 'Bride'; // Change to 'Groom' for groom-side site
 
   // ===========================================================================
-  // 📸 GOOGLE DRIVE PHOTO UPLOAD CONFIG
-  // 1. Create a folder in Google Drive named "Prakash & Priya Wedding Photos"
-  // 2. Right-click → Share → Change to "Anyone with the link" → "Editor" access
-  //    (This allows guests to upload without signing in to your account)
-  // 3. Copy the folder URL and paste it below
-  //
-  // Example: https://drive.google.com/drive/folders/1ABC123xyz...
+  // 📸 GOOGLE DRIVE PHOTO UPLOAD — Paste your Drive folder URL here
+  // Folder must be shared "Anyone with the link" → Editor access
   // ===========================================================================
-  const PHOTO_UPLOAD_URL = 'https://drive.google.com/drive/folders/17pN4Yym_NVngkGlkxT6jCzgqChbXv7B2?usp=drive_link';
-  const PHOTO_VIEW_URL = https://drive.google.com/drive/folders/17pN4Yym_NVngkGlkxT6jCzgqChbXv7B2?usp=drive_link; // Same folder for viewing; or use a separate gallery URL
+  const PHOTO_UPLOAD_URL = 'https://drive.google.com/drive/folders/17pN4Yym_NVngkGlkxT6jCzgqChbXv7B2';
+  const PHOTO_VIEW_URL = PHOTO_UPLOAD_URL;
 
   const EVENTS = [
     {
@@ -182,7 +176,7 @@ export default function WeddingWebsite() {
   };
 
   // ===========================================================================
-  // 📤 RSVP SUBMIT → Google Sheets
+  // 📤 RSVP → Google Sheets
   // ===========================================================================
   const submitRsvp = async () => {
     if (!rsvp.name || !rsvp.attending) return;
@@ -204,8 +198,6 @@ export default function WeddingWebsite() {
     };
 
     try {
-      // Note: 'no-cors' mode is required for Google Apps Script.
-      // We can't read the response, but the data will still be saved.
       await fetch(GOOGLE_SHEET_URL, {
         method: 'POST',
         mode: 'no-cors',
@@ -321,23 +313,21 @@ export default function WeddingWebsite() {
           font-variant-numeric: tabular-nums;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FDF6E9; }
         ::-webkit-scrollbar-thumb { background: #B45309; border-radius: 4px; }
 
         html { scroll-behavior: smooth; }
 
-        /* Diya pattern */
         .diya-pattern {
           background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(180, 83, 9, 0.03) 20px, rgba(180, 83, 9, 0.03) 40px);
         }
       `}</style>
 
-      {/* ================ TOP MARIGOLD STRIP ================ */}
+      {/* TOP MARIGOLD STRIP */}
       <div className="marigold-border h-2 fixed top-0 left-0 right-0 z-50" />
 
-      {/* ================ NAV ================ */}
+      {/* NAV */}
       <nav className="fixed top-2 left-0 right-0 z-40 bg-[#FDF6E9]/95 backdrop-blur border-b border-amber-200/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <button onClick={() => scrollTo('home')} className="flex items-center gap-2 group">
@@ -350,7 +340,6 @@ export default function WeddingWebsite() {
             </div>
           </button>
 
-          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <button
@@ -381,7 +370,6 @@ export default function WeddingWebsite() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {navOpen && (
           <div className="lg:hidden border-t border-amber-200 bg-[#FDF6E9]">
             {navItems.map((item) => (
@@ -400,19 +388,16 @@ export default function WeddingWebsite() {
         )}
       </nav>
 
-      {/* ================ HOME / HERO ================ */}
+      {/* HOME / HERO */}
       <section id="home" className="relative pt-24 sm:pt-28 min-h-screen flex items-center mandala-bg paper-texture overflow-hidden">
-        {/* Decorative corner ornaments */}
         <div className="absolute top-20 left-4 sm:left-10 text-6xl sm:text-8xl text-amber-300/30 float-slow font-hindi">॥</div>
         <div className="absolute bottom-10 right-4 sm:right-10 text-6xl sm:text-8xl text-red-300/30 float-slow font-hindi" style={{ animationDelay: '2s' }}>॥</div>
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 text-center relative z-10">
-          {/* Shri Ganesh */}
           <div className="fade-up font-hindi text-amber-700 text-sm sm:text-base mb-6 tracking-widest">
             ॥ श्री गणेशाय नमः ॥
           </div>
 
-          {/* Couple names */}
           <div className="fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="font-deco text-xs sm:text-sm text-amber-800 tracking-[0.3em] mb-2">
               TOGETHER WITH THEIR FAMILIES
@@ -440,7 +425,6 @@ export default function WeddingWebsite() {
             </div>
           </div>
 
-          {/* Date */}
           <div className="fade-up mt-10 inline-block" style={{ animationDelay: '0.4s' }}>
             <div className="flex items-center gap-4 sm:gap-6 justify-center">
               <div className="text-right">
@@ -457,7 +441,6 @@ export default function WeddingWebsite() {
             </div>
           </div>
 
-          {/* Countdown */}
           <div className="fade-up mt-12" style={{ animationDelay: '0.6s' }}>
             <div className="text-xs font-deco text-amber-800 tracking-widest mb-1 ornament">
               <span>THE COUNTDOWN BEGINS</span>
@@ -481,7 +464,6 @@ export default function WeddingWebsite() {
             </div>
           </div>
 
-          {/* CTAs */}
           <div className="fade-up mt-10 flex flex-wrap items-center justify-center gap-3" style={{ animationDelay: '0.8s' }}>
             <button
               onClick={() => scrollTo('rsvp')}
@@ -505,14 +487,13 @@ export default function WeddingWebsite() {
             </button>
           </div>
 
-          {/* Hashtag */}
           <div className="fade-up mt-10 font-deco text-sm text-amber-800 tracking-widest" style={{ animationDelay: '1s' }}>
             {WEDDING.hashtag}
           </div>
         </div>
       </section>
 
-      {/* ================ STORY ================ */}
+      {/* STORY */}
       <section id="story" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-b from-[#FDF6E9] to-amber-50/40">
         <div className="max-w-4xl mx-auto text-center">
           <div className="font-hindi text-amber-700 text-sm mb-3">॥ हमारी कहानी ॥</div>
@@ -538,7 +519,6 @@ export default function WeddingWebsite() {
             {WEDDING.storyEn}
           </p>
 
-          {/* Timeline */}
           <div className="mt-16 grid sm:grid-cols-3 gap-6 text-left">
             {[
               {
@@ -553,14 +533,14 @@ export default function WeddingWebsite() {
                 titleEn: 'A New Beginning',
                 titleHi: 'नई शुरुआत',
                 bodyEn: 'With the blessings of their families, Priya and Prakash are ready to begin this beautiful journey together and create a lifetime of memories.',
-                bodyHi: 'परिवारों के आशीर्वाद के साथ, प्रिया और प्रकाश अब अपनी नई जिंदगी की शुरुआत करने जा रहे हैं और साथ मिलकर खूबसूरत यादें बनाने के लिए तैयार हैं।',
+                bodyHi: 'परिवारों के आशीर्वाद के साथ, प्रिया और प्रकाश अब अपनी नई जिंदगी की शुरुआत करने जा रहे हैं।',
               },
               {
                 icon: '🎉',
                 titleEn: 'Lifetime Commitment',
                 titleHi: 'जीवनभर का साथ',
                 bodyEn: 'Now we invite you to witness our forever begin — with sindoor, vows, and a lot of joy.',
-                bodyHi: 'अब हम आपको आमंत्रित करते हैं कि हमारे सदा-सर्वदा की शुरुआत के साक्षी बनें — सिंदूर, वचन, और असीम आनंद के साथ।',
+                bodyHi: 'अब हम आपको आमंत्रित करते हैं कि हमारे सदा-सर्वदा की शुरुआत के साक्षी बनें।',
               },
             ].map((s, i) => (
               <div key={i} className="bg-white/60 border border-amber-200 rounded-lg p-6 shadow-sm hover:shadow-md transition">
@@ -575,7 +555,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      {/* ================ EVENTS ================ */}
+      {/* EVENTS */}
       <section id="events" className="py-20 sm:py-28 px-4 sm:px-6 diya-pattern">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
@@ -586,7 +566,7 @@ export default function WeddingWebsite() {
           </div>
 
           <div className="space-y-5">
-            {EVENTS.map((ev, idx) => (
+            {EVENTS.map((ev) => (
               <div
                 key={ev.key}
                 className={`relative rounded-2xl border-2 p-5 sm:p-7 shadow-sm hover:shadow-lg transition-all ${colorClasses[ev.color]} ${
@@ -594,7 +574,6 @@ export default function WeddingWebsite() {
                 }`}
               >
                 <div className="grid sm:grid-cols-[auto_1fr_auto] gap-4 sm:gap-6 items-start">
-                  {/* Date block */}
                   <div className="text-center sm:border-r sm:border-current/20 sm:pr-6 min-w-[100px]">
                     <div className="text-4xl mb-1">{ev.icon}</div>
                     <div className="font-deco text-xs tracking-widest opacity-70">{ev.dateLabel.split(',')[0]}</div>
@@ -602,7 +581,6 @@ export default function WeddingWebsite() {
                     <div className="font-deco text-xs tracking-widest opacity-70">{ev.dateLabel.split(' ')[2]?.toUpperCase()}</div>
                   </div>
 
-                  {/* Details */}
                   <div className="space-y-2">
                     <div className="font-hindi text-lg sm:text-xl font-semibold">{ev.name}</div>
                     <div className="font-script text-2xl sm:text-3xl">{ev.nameEn}</div>
@@ -630,7 +608,6 @@ export default function WeddingWebsite() {
                     </div>
                   </div>
 
-                  {/* Actions */}
                   <div className="flex sm:flex-col gap-2 mt-2 sm:mt-0">
                     <button
                       onClick={() => addToCalendar(ev)}
@@ -660,7 +637,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      {/* ================ RSVP ================ */}
+      {/* RSVP */}
       <section id="rsvp" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-b from-amber-50/40 to-[#FDF6E9]">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
@@ -674,7 +651,6 @@ export default function WeddingWebsite() {
 
           {!rsvpSubmitted ? (
             <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 sm:p-8 shadow-md space-y-5">
-              {/* Name */}
               <div>
                 <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">YOUR NAME * / आपका नाम</label>
                 <input
@@ -686,7 +662,6 @@ export default function WeddingWebsite() {
                 />
               </div>
 
-              {/* Attending */}
               <div>
                 <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">WILL YOU BE JOINING? * / क्या आप पधार रहे हैं?</label>
                 <div className="grid grid-cols-2 gap-3">
@@ -712,7 +687,6 @@ export default function WeddingWebsite() {
 
               {rsvp.attending === 'yes' && (
                 <>
-                  {/* Guest count */}
                   <div>
                     <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">NUMBER OF GUESTS / अतिथियों की संख्या</label>
                     <div className="flex items-center gap-3">
@@ -729,7 +703,6 @@ export default function WeddingWebsite() {
                     </div>
                   </div>
 
-                  {/* Events attending */}
                   <div>
                     <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">WHICH EVENTS? / किन कार्यक्रमों में आएँगे?</label>
                     <div className="grid sm:grid-cols-2 gap-2">
@@ -759,10 +732,9 @@ export default function WeddingWebsite() {
                     </div>
                   </div>
 
-                  {/* Meal */}
                   <div>
                     <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">MEAL PREFERENCE / भोजन पसंद</label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                       {[
                         { val: 'veg', label: '🌱 Veg' },
                         { val: 'jain', label: '🙏 Jain' },
@@ -780,7 +752,6 @@ export default function WeddingWebsite() {
                     </div>
                   </div>
 
-                  {/* Accommodation */}
                   <div>
                     <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">NEED ACCOMMODATION? / आवास की आवश्यकता?</label>
                     <div className="grid grid-cols-2 gap-2">
@@ -798,7 +769,6 @@ export default function WeddingWebsite() {
                     </div>
                   </div>
 
-                  {/* Travel */}
                   <div>
                     <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">TRAVEL DETAILS (optional) / यात्रा विवरण</label>
                     <input
@@ -810,7 +780,6 @@ export default function WeddingWebsite() {
                     />
                   </div>
 
-                  {/* Phone */}
                   <div>
                     <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">PHONE NUMBER (optional) / फ़ोन नंबर</label>
                     <input
@@ -824,7 +793,6 @@ export default function WeddingWebsite() {
                 </>
               )}
 
-              {/* Message */}
               <div>
                 <label className="font-deco text-xs tracking-widest text-stone-700 block mb-2">A MESSAGE FOR THE COUPLE (optional) / नवदम्पति के लिए संदेश</label>
                 <textarea
@@ -836,7 +804,6 @@ export default function WeddingWebsite() {
                 />
               </div>
 
-              {/* Error message */}
               {rsvpError && (
                 <div className="bg-red-50 border border-red-300 text-red-800 px-4 py-3 rounded-lg text-sm">
                   ⚠️ {rsvpError}
@@ -879,7 +846,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      {/* ================ TRAVEL & STAY ================ */}
+      {/* TRAVEL & STAY */}
       <section id="travel" className="py-20 sm:py-28 px-4 sm:px-6 mandala-bg">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-14">
@@ -890,7 +857,6 @@ export default function WeddingWebsite() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {/* By Air */}
             <div className="bg-white border border-amber-200 rounded-2xl p-6 shadow-sm">
               <Plane size={28} className="text-amber-700 mb-3" />
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">BY AIR</h3>
@@ -904,7 +870,6 @@ export default function WeddingWebsite() {
               </div>
             </div>
 
-            {/* By Train */}
             <div className="bg-white border border-amber-200 rounded-2xl p-6 shadow-sm">
               <Car size={28} className="text-amber-700 mb-3" />
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">BY TRAIN</h3>
@@ -917,7 +882,6 @@ export default function WeddingWebsite() {
               </div>
             </div>
 
-            {/* Weather */}
             <div className="bg-gradient-to-br from-amber-100 to-orange-50 border border-amber-200 rounded-2xl p-6 shadow-sm">
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">☀️ WEATHER IN JUNE</h3>
               <div className="font-hindi text-sm text-amber-800 mb-3">जून का मौसम</div>
@@ -930,7 +894,6 @@ export default function WeddingWebsite() {
               </div>
             </div>
 
-            {/* Local Transport */}
             <div className="bg-gradient-to-br from-rose-50 to-amber-50 border border-amber-200 rounded-2xl p-6 shadow-sm">
               <h3 className="font-deco text-lg tracking-widest text-red-900 mb-1">🛺 LOCAL TRANSPORT</h3>
               <div className="font-hindi text-sm text-amber-800 mb-3">स्थानीय यातायात</div>
@@ -947,7 +910,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      {/* ================ GALLERY ================ */}
+      {/* GALLERY */}
       <section id="gallery" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-b from-[#FDF6E9] to-rose-50/30">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -957,7 +920,6 @@ export default function WeddingWebsite() {
             <p className="font-serif-display text-stone-600 mt-1">Pre-wedding moments &amp; memories</p>
           </div>
 
-          {/* Placeholder gallery */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {[...Array(8)].map((_, i) => (
               <div
@@ -990,22 +952,18 @@ export default function WeddingWebsite() {
                 VIEW ALL PHOTOS / सभी फ़ोटो देखें →
               </a>
             </div>
-            <div className="max-w-md mx-auto">
-              <p className="text-xs text-stone-600 font-serif-display italic">
-                Click "Upload" to add your photos to our shared Google Drive folder.
-              </p>
-              <p className="text-xs text-stone-600 font-hindi italic mt-1">
-                कृपया अपनी फ़ोटो हमारे Google Drive फ़ोल्डर में अपलोड करें।
-              </p>
-              <p className="text-xs text-stone-500 mt-2 font-serif-display">
-                Also share on social media using <span className="font-semibold text-amber-800">{WEDDING.hashtag}</span>
-              </p>
-            </div>
+            <p className="text-xs text-stone-600 font-serif-display italic max-w-md mx-auto">
+              Click "Upload" to add your photos to our shared Google Drive folder.<br />
+              <span className="font-hindi not-italic">कृपया अपनी फ़ोटो हमारे Google Drive फ़ोल्डर में अपलोड करें।</span>
+            </p>
+            <p className="text-xs text-stone-500 font-serif-display">
+              Also share on social media using <span className="font-semibold text-amber-800">{WEDDING.hashtag}</span>
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ================ GIFTS / BLESSINGS ================ */}
+      {/* BLESSINGS */}
       <section id="gifts" className="py-20 sm:py-28 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
@@ -1035,7 +993,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      {/* ================ LIVE UPDATES ================ */}
+      {/* LIVE UPDATES */}
       <section id="updates" className="py-20 sm:py-28 px-4 sm:px-6 bg-gradient-to-b from-rose-50/30 to-[#FDF6E9]">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-10">
@@ -1079,7 +1037,6 @@ export default function WeddingWebsite() {
             <span className="font-hindi not-italic">शादी सप्ताह के दौरान परिवार द्वारा अद्यतन। इस पेज को सहेज कर रखें!</span>
           </div>
 
-          {/* Emergency contacts */}
           <div className="mt-10 bg-white border-2 border-red-200 rounded-2xl p-6">
             <h3 className="font-deco text-sm tracking-widest text-red-900 mb-1 text-center">🚨 EMERGENCY CONTACTS</h3>
             <div className="font-hindi text-xs text-amber-800 text-center mb-4">आपातकालीन सम्पर्क</div>
@@ -1103,7 +1060,7 @@ export default function WeddingWebsite() {
         </div>
       </section>
 
-      {/* ================ FOOTER ================ */}
+      {/* FOOTER */}
       <footer className="bg-gradient-to-b from-[#FDF6E9] to-red-900 text-amber-100 py-12 px-4 mt-10">
         <div className="max-w-4xl mx-auto text-center">
           <div className="font-script text-4xl gold-shimmer mb-2">
